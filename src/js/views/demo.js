@@ -10,16 +10,16 @@ export const Demo = () => {
 	const [fullName, setFullName ] = useState("");
 	const [emailAddress, setEmailAddress ] = useState("");
 	const [phoneNumber, setPhoneNumber ] = useState("");
-	const [PostalAddress, setPostalAddress ] = useState("");
+	const [postalAddress, setPostalAddress ] = useState("");
 
 	const handleSubmit = e => {
 		e.preventDefault();
 		console.log(fullName);
-		/* actions.addContact( fullName, emailAddress, phoneNumber, PostalAddress );
+		actions.createContact( fullName, emailAddress, postalAddress, phoneNumber );
 		setFullName("");
 		setEmailAddress("");
 		setPhoneNumber("");
-		setPostalAddress(""); */
+		setPostalAddress("");
 	}
 
 	return (
@@ -41,7 +41,7 @@ export const Demo = () => {
 			</div>
 			<div className="mb-3">
 				<label className="form-label" >Address</label>
-				<input type="text" className="form-control" value={PostalAddress} onChange={e => setPostalAddress(e.target.value)} placeholder = "Enter address here..." />
+				<input type="text" className="form-control" value={postalAddress} onChange={e => setPostalAddress(e.target.value)} placeholder = "Enter address here..." />
 			</div>
 			<div className="d-grid gap-2">
 			<button type="submit" className="btn btn-primary">Save</button>
