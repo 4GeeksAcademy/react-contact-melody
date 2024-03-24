@@ -27,21 +27,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 
 				getContact: () => {
-					fetch('https://playground.4geeks.com/apis/fake/contact/agenda/melodycn', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify({
-						"full_name": fullName,
-						"email": emailAddress,
-						"agenda_slug": "melodycn",
-						"address": postalAddress,
-						"phone": phoneNumber,
-						})
-					})
+					fetch('https://playground.4geeks.com/apis/fake/contact/agenda/melodycn')
 						.then(response => response.json())
-						.then(data => setStore({contacts: data}))
+						.then(data => {
+							setStore({contacts: data})
+							console.log(data)
+						})
 						.catch(error => console.log('Error: ', error));
 
 				},
