@@ -7,37 +7,53 @@ import "../../styles/demo.css";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
+	const [fullName, setFullName ] = useState("");
+	const [emailAddress, setEmailAddress ] = useState("");
+	const [phoneNumber, setPhoneNumber ] = useState("");
+	const [PostalAddress, setPostalAddress ] = useState("");
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		console.log(fullName);
+		/* actions.addContact( fullName, emailAddress, phoneNumber, PostalAddress );
+		setFullName("");
+		setEmailAddress("");
+		setPhoneNumber("");
+		setPostalAddress(""); */
+	}
 
 	return (
+
 		<div className="container">
-			<ul className="list-group">
-				{store.demo.map((item, index) => {
-					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
-					);
-				})}
-			</ul>
-			<br />
+			<h1 className="text-center">Add a new contact</h1>
+		<form onSubmit={handleSubmit} >
+			<div className="mb-3">
+				<label className="form-label" >Full name</label>
+				<input type="text" className="form-control" value={fullName} onChange={e => setFullName(e.target.value)}  placeholder = "Type name here..." />
+			</div>
+			<div className="mb-3">
+				<label className="form-label" >Email</label>
+				<input type="email" className="form-control" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} placeholder = "Enter email here..." />
+			</div>
+			<div className="mb-3">
+				<label className="form-label" >Phone Number</label>
+				<input type="text" className="form-control" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} placeholder = "Enter number here..." />
+			</div>
+			<div className="mb-3">
+				<label className="form-label" >Address</label>
+				<input type="text" className="form-control" value={PostalAddress} onChange={e => setPostalAddress(e.target.value)} placeholder = "Enter address here..." />
+			</div>
+			<div className="d-grid gap-2">
+			<button type="submit" className="btn btn-primary">Save</button>
+			</div>
+
+			
+		</form>
+		<button onClick={ ()=> console.log(fullName)}> ver detalles </button>
 			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
+				<button className="btn btn-link">or get back to Contacts</button>
 			</Link>
 		</div>
+		
 	);
 };
