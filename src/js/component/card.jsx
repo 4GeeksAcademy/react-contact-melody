@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Card = (props) => {
 	return (
@@ -18,7 +19,9 @@ export const Card = (props) => {
                 </div>
               </div>
               <div className="col-md-1">
-                  <p className="card-text"></p>
+                <Link to={`/editForm/${props.id}`}>
+                  <p className="card-text"><button>Editar</button></p>
+                  </Link>
               </div>
             </div>
           </div>

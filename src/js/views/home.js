@@ -10,8 +10,6 @@ export const Home = () => {
 
 	useEffect(() => {
 		actions.getContact();
-		console.log(store.contacts);
-
 
 	}, []
 	
@@ -27,6 +25,7 @@ export const Home = () => {
 				postalAddress ={item.address}
 				phoneNumber ={item.phone}
 				emailAddress ={item.email}
+				id ={item.id}
 				key={index} />
 				)
 			})

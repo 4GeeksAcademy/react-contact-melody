@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			contacts: [],
+			contact: {}
 			
 				},
 		actions: {
@@ -36,7 +37,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch(error => console.log('Error: ', error));
 
 				},
-			
+
+				getSingleContact: (id) => {
+					fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`) 
+						.then(response => response.json())
+						.then(data => setStore({contact:data}))
+						.catch(error => console.log('Error: ', error))
+					
+				},
+				
+				editContact: (fullName, emailAddress, postalAddress, phoneNumber, id) => {
+					fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`
+					, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+						"full_name": fullName,
+						"email": emailAddress,
+						"agenda_slug": "melodycn",
+						"address": postalAddress,
+						"phone": phoneNumber,
+						})
+					}) 
+						.then(response => response.json())
+						.then(data => console.log(data))
+						.catch(error => console.log('Error: ', error));
+
+				},
 			}
 
 		}
