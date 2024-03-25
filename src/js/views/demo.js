@@ -49,7 +49,7 @@ export const Demo = () => {
 
 			
 		</form>
-		<button onClick={ ()=> console.log(fullName)}> ver detalles </button>
+		
 			<Link to="/">
 				<button className="btn btn-link">or get back to Contacts</button>
 			</Link>
