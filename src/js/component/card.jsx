@@ -1,4 +1,5 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
+import "../../styles/card.css";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -8,11 +9,12 @@ export const Card = (props) => {
   const handleDelete = () =>{
       actions.deleteContact(props.id);
   }
+
 	return (
 		
               <div className="container-fluid col-10">
               <div className="card mb-3" >
-            <div className="row">
+            <div className="row contactCard">
               <div className="col-3">
                 <img src="https://t4.ftcdn.net/jpg/05/89/93/27/360_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg" className="rounded-circle mx-auto d-block img-fluid" />
               </div>
