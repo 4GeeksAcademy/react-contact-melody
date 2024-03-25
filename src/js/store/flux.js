@@ -66,6 +66,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch(error => console.log('Error: ', error));
 
 				},
+
+				deleteContact: (id) => {
+					fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, 
+					{
+						method: 'DELETE',
+					})
+						.then(response => response.json())
+						.then(data => console.log(data))
+						.catch(error => console.log('Error: ', error));
+
+				
+				}
 			}
 
 		}
