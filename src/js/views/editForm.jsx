@@ -15,11 +15,17 @@ export const EditForm = () => {
 
     useEffect(() => {
         actions.getSingleContact(id);
-        setFullName(store.contact.full_name);
+        
+    }, []);
+
+	useEffect(() => {
+
+		setFullName(store.contact.full_name);
         setEmailAddress(store.contact.email);
         setPhoneNumber(store.contact.phone);
         setPostalAddress(store.contact.address)
-    }, []);
+
+	}, [store.contact]);
     /* console.log(id) */
 
 	const handleSubmit = e => {
